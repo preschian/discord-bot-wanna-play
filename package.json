@@ -1,0 +1,38 @@
+{
+  "name": "discord-bot-wanna-play",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "micro",
+    "deploy": "now rm discord-bot-wanna-play -y && now"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preschian/discord-bot-wanna-play.git"
+  },
+  "author": "Preschian Febryantara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/preschian/discord-bot-wanna-play/issues"
+  },
+  "homepage": "https://github.com/preschian/discord-bot-wanna-play#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "level": "^4.0.0",
+    "lodash": "^4.17.10",
+    "micro": "^9.3.3",
+    "now-env": "^3.1.0"
+  },
+  "now": {
+    "env": {
+      "TOKEN": "@discord-token"
+    },
+    "scale": {
+      "sfo1": {
+        "min": 1,
+        "max": 1
+      }
+    }
+  }
+}
