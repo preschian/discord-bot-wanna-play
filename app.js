@@ -10,8 +10,6 @@ var db = level('./data', { valueEncoding: 'json' })
 
 const token = process.env.TOKEN
 
-console.log(token)
-
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`)
 })
@@ -101,3 +99,5 @@ bot.on('message', msg => {
 })
 
 bot.login(token)
+
+module.exports = () => 'aloha!'
