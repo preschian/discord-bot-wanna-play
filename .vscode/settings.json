@@ -2,5 +2,6 @@
   "prettier.trailingComma": "all",
   "prettier.semi": false,
   "prettier.singleQuote": true,
-  "prettier.printWidth": 120
+  "prettier.printWidth": 120,
+  "javascript.suggestionActions.enabled": false
 }

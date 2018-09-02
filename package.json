@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "micro",
+    "development": "NODE_ENV=development node app",
     "deploy": "now rm discord-bot-wanna-play -y && now"
   },
   "repository": {
