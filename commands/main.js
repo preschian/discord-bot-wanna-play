@@ -3,15 +3,16 @@ import pemain from './pemain'
 
 async function main(db, msg) {
   const channel = msg.channel.name
+  const channel_id = msg.channel.id
   const { id, discriminator, username } = msg.author
-  const current_data = { id, channel, discriminator, username }
+  const current_data = { id, channel_id, channel, discriminator, username }
 
   await db.get('pemain', async (err, val) => {
     if (err) {
       // first data
       if (err.notFound) {
         db.put('pemain', [current_data])
-        msg.reply(`mau main di channel ${channel}`)
+        msg.channel.send(`<@${id}> mau main di channel <#${channel_id}>`)
       }
 
       return
@@ -28,9 +29,8 @@ async function main(db, msg) {
     const update_data = concat(val, current_data)
 
     await db.put('pemain', update_data)
-    msg.reply(`mau main di channel ${channel}`)
+    msg.channel.send(`<@${id}> mau main di channel <#${channel_id}>`)
   })
-  // msg.channel.send(`@${username} mau main di channel ${channel}`)
 }
 
 export default main

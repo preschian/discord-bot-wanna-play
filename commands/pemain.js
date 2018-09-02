@@ -1,7 +1,7 @@
 import { filter } from 'lodash'
 
 async function pemain(db, msg) {
-  const channel = msg.channel.name
+  const channel_id = msg.channel.id
 
   await db.get('pemain', async (err, val) => {
     if (err) {
@@ -9,7 +9,7 @@ async function pemain(db, msg) {
       return
     }
 
-    const filter_channel = filter(val, ['channel', channel])
+    const filter_channel = filter(val, ['channel_id', channel_id])
     const get_username = filter_channel.map(u => `<@${u.id}>`).join(' ')
 
     if (filter_channel.length === 0) {
