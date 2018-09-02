@@ -1,9 +1,5 @@
-const main = require('./main')
-const pemain = require('./pemain')
-const gg = require('./gg')
+import gg from './gg'
+import main from './main'
+import pemain from './pemain'
 
-module.exports = {
-  main,
-  pemain,
-  gg,
-}
+export { gg, main, pemain }

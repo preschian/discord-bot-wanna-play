@@ -1,15 +1,12 @@
-require('now-env')
+import { Client } from 'discord.js'
+import level from 'level'
+import 'now-env'
+import { gg, main, pemain } from './commands/index'
 
-// setup discord
-const Discord = require('discord.js')
-const bot = new Discord.Client()
-
-// setup simple db
-const level = require('level')
+const bot = new Client()
 let db = level('./data', { valueEncoding: 'json' })
 
 const token = process.env.TOKEN
-const { main, pemain, gg } = require('./commands/index')
 
 bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`)
@@ -39,4 +36,4 @@ bot.on('message', msg => {
 
 bot.login(token)
 
-module.exports = () => 'aloha!'
+export default () => 'aloha!'

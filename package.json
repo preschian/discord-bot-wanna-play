@@ -2,10 +2,10 @@
   "name": "discord-bot-wanna-play",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "micro",
-    "development": "NODE_ENV=development node app",
+    "development": "NODE_ENV=development node index",
     "deploy": "now rm discord-bot-wanna-play -y && now"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/preschian/discord-bot-wanna-play#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "esm": "^3.0.81",
     "level": "^4.0.0",
     "lodash": "^4.17.10",
     "micro": "^9.3.3",

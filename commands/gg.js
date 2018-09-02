@@ -1,6 +1,6 @@
-const { filter } = require('lodash')
+import { filter } from 'lodash'
 
-module.exports = async function gg(db, msg) {
+async function gege(db, msg) {
   const channel = msg.channel.name
 
   await db.get('pemain', async (err, val) => {
@@ -11,3 +11,5 @@ module.exports = async function gg(db, msg) {
     msg.channel.send(`udahan main di channel ${channel}`)
   })
 }
+
+export default gege

@@ -1,7 +1,7 @@
-const { concat, find, size } = require('lodash')
-const pemain = require('./pemain')
+import { concat, find, size } from 'lodash'
+import pemain from './pemain'
 
-module.exports = async function mauMain(db, msg) {
+async function main(db, msg) {
   const channel = msg.channel.name
   const { id, discriminator, username } = msg.author
   const current_data = { id, channel, discriminator, username }
@@ -32,3 +32,5 @@ module.exports = async function mauMain(db, msg) {
   })
   // msg.channel.send(`@${username} mau main di channel ${channel}`)
 }
+
+export default main

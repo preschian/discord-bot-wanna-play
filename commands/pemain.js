@@ -1,6 +1,6 @@
-const { filter } = require('lodash')
+import { filter } from 'lodash'
 
-module.exports = async function pemain(db, msg) {
+async function pemain(db, msg) {
   const channel = msg.channel.name
 
   await db.get('pemain', async (err, val) => {
@@ -20,3 +20,5 @@ module.exports = async function pemain(db, msg) {
     msg.channel.send(`daftar pemain ${get_username.toString()}`)
   })
 }
+
+export default pemain
