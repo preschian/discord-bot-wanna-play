@@ -7,12 +7,12 @@ async function main(db, msg) {
   const { id, discriminator, username } = msg.author
   const current_data = { id, channel_id, channel, discriminator, username }
 
-  await db.get('pemain', async (err, val) => {
+  await db.get(`${channel_id}`, async (err, val) => {
     if (err) {
       // first data
       if (err.notFound) {
-        db.put('pemain', [current_data])
-        msg.channel.send(`<@${id}> mau main di channel <#${channel_id}>`)
+        db.put(`${channel_id}`, [current_data])
+        msg.channel.send(`si <@${id}> mau main di channel <#${channel_id}>`)
       }
 
       return
@@ -28,8 +28,8 @@ async function main(db, msg) {
 
     const update_data = concat(val, current_data)
 
-    await db.put('pemain', update_data)
-    msg.channel.send(`<@${id}> mau main di channel <#${channel_id}>`)
+    await db.put(`${channel_id}`, update_data)
+    msg.channel.send(`si <@${id}> mau main di channel <#${channel_id}>`)
   })
 }
 
