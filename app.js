@@ -20,7 +20,7 @@ bot.on('message', async msg => {
     process.exit(0)
   }
 
-  if (msg.content.charAt(0) === '!') {
+  if (msg.content.charAt(0) === '?') {
     if (msg.member.voiceChannel) {
       const con = await msg.member.voiceChannel.join()
 
