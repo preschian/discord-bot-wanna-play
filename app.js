@@ -1,7 +1,7 @@
 import { Client } from 'discord.js'
 import level from 'level'
 import 'now-env'
-import { gg, main, pemain } from './commands/index'
+import { gg, main, pemain, suara } from './commands/index'
 
 const bot = new Client()
 let db = level('./data', { valueEncoding: 'json' })
@@ -12,7 +12,28 @@ bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`)
 })
 
-bot.on('message', msg => {
+bot.on('message', async msg => {
+  if (!msg.guild) return
+
+  if (process.env.NODE_ENV === 'development' && msg.content === 'gg') {
+    bot.destroy()
+    process.exit(0)
+  }
+
+  if (msg.content.charAt(0) === '!') {
+    if (msg.member.voiceChannel) {
+      const con = await msg.member.voiceChannel.join()
+
+      if (msg.content.length === 1) return
+
+      suara(bot, con, msg, parseInt(msg.content.substr(1)))
+    } else {
+      msg.reply('kamu harus masuk saluran suara terlebih dahulu')
+    }
+
+    return
+  }
+
   switch (msg.content) {
     case '/main':
       main(db, msg)
@@ -26,8 +47,8 @@ bot.on('message', msg => {
     case '/gg':
       gg(db, msg)
       break
-    case '/destroy':
-      if (process.env.NODE_ENV === 'development') bot.destroy()
+    case '!leave':
+      msg.member.voiceChannel.leave()
       break
     default:
       break
