@@ -2,8 +2,7 @@
   "name": "discord-bot-wanna-play",
   "alias": "discord-bot-wanna-play",
   "env": {
-    "TOKEN": "@discord-token",
-    "NOW_TOKEN": "@now-token"
+    "TOKEN": "@discord-token"
   },
   "scale": {
     "sfo1": {
