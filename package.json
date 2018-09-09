@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "now alias -t $NOW_TOKEN && now scale discord-bot-wanna-play.now.sh sfo 1 && node index",
-    "development": "NODE_ENV=development node index",
-    "deploy": "now rm discord-bot-wanna-play -y && now"
+    "now-alias": "now alias -t $NOW_TOKEN",
+    "now-scale": "now scale discord-bot-wanna-play.now.sh sfo 1 -t $NOW_TOKEN",
+    "start": "npm run now-alias && npm run now-scale && node index",
+    "development": "NODE_ENV=development node index"
   },
   "repository": {
     "type": "git",
