@@ -27,7 +27,6 @@
     "node-opus": "^0.3.0",
     "now": "11.4.1",
     "now-env": "^3.1.0",
-    "opusscript": "^0.0.6",
-    "restify": "7.2.1"
+    "opusscript": "^0.0.6"
   }
 }

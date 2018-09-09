@@ -1,7 +1,7 @@
 import { Client } from 'discord.js'
+import http from 'http'
 import level from 'level'
 import 'now-env'
-import restify from 'restify'
 import { gg, main, pemain, suara } from './commands/index'
 
 const bot = new Client()
@@ -74,11 +74,10 @@ bot.on('message', async msg => {
 bot.login(token)
 
 // open port
-// const server = restify.createServer()
-// server.get('/', (req, res, next) => {
-//   res.send({ status: 'aloha!' })
-// })
-
-// server.listen(3000, function() {
-//   console.log('%s listening at %s', server.name, server.url)
-// })
+http
+  .createServer(function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.write('aloha!')
+    res.end()
+  })
+  .listen(8080)
