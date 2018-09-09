@@ -1,14 +1,9 @@
-image: mhart/alpine-node:9
-
-# cache:
-#   paths:
-#     - node_modules/
-
 deploy:
+  image: mhart/alpine-node:9
   script:
     - npm install -g now
-    - now -t $ZEIT_TOKEN
-    - now alias -t $ZEIT_TOKEN
-    # - now rm discord-bot-wanna-play -y -t $ZEIT_TOKEN
+    - now -t ${ZEIT_TOKEN}
+    - now alias -t ${ZEIT_TOKEN}
+    # - now rm discord-bot-wanna-play -y -t ${ZEIT_TOKEN}
   only:
     - /^dev-.*$/
