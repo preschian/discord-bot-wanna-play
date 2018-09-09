@@ -11,17 +11,25 @@ silakan kunjungi tautan [bot ini](https://discordapp.com/oauth2/authorize?client
 ```sh
 # main di suatu channel, hasil:
 # @username, mau main di channel @nama-channel
-/main
+!main
 
 # melihat daftar pemain di channel, hasil:
 # daftar pemain @username
-/pemain
+!pemain
 
 # menyebut ke semua orang yang ada di channel, hasil:
 # ayo main oy~ @everyone
-/ajak
+!ajak
 
 # mengakhiri permainan di channel, hasil:
 # udahan main di channel @channel
-/gg
+!gg
+
+# memasukkan bot ke saluran percakapan
+?
+# bot mengeluarkan suara dari Chat Wheel Dota 2
+# https://dota2.gamepedia.com/Chat_Wheel, penggunaan: ?[angka]
+?155
+# mengeluarkan bot dari saluran percakapan
+!keluar
 ```

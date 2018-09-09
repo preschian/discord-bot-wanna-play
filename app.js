@@ -1,7 +1,8 @@
 import { Client } from 'discord.js'
+import http from 'http'
 import level from 'level'
 import 'now-env'
-import { gg, main, pemain } from './commands/index'
+import { gg, main, pemain, suara } from './commands/index'
 
 const bot = new Client()
 let db = level('./data', { valueEncoding: 'json' })
@@ -12,22 +13,58 @@ bot.on('ready', () => {
   console.log(`Logged in as ${bot.user.tag}!`)
 })
 
-bot.on('message', msg => {
+bot.on('message', async msg => {
+  if (!msg.guild) return
+
+  if (process.env.NODE_ENV === 'development' && msg.content === 'gg') {
+    bot.destroy()
+    process.exit(0)
+  }
+
+  if (msg.content.charAt(0) === '?') {
+    if (msg.member.voiceChannel) {
+      const con = await msg.member.voiceChannel.join()
+
+      if (msg.content.length === 1) return
+
+      suara(bot, con, msg, parseInt(msg.content.substr(1), 10))
+    } else {
+      msg.reply('kamu harus masuk saluran suara terlebih dahulu')
+    }
+
+    return
+  }
+
   switch (msg.content) {
-    case '/main':
+    case '!main':
       main(db, msg)
       break
-    case '/pemain':
+    case '!pemain':
       pemain(db, msg)
       break
-    case '/ajak':
+    case '!ajak':
       msg.channel.send(`ayo main oy~ @everyone`)
       break
-    case '/gg':
+    case '!gg':
       gg(db, msg)
       break
-    case '/destroy':
-      if (process.env.NODE_ENV === 'development') bot.destroy()
+    case '!keluar':
+      msg.member.voiceChannel.leave()
+      break
+    case '!tutup':
+      if (parseInt(msg.author.id, 10) === 108152551244881920) {
+        bot.destroy()
+        process.exit(0)
+      }
+      break
+    case '!perintah':
+      msg.reply(`
+      !main
+      !pemain
+      !ajak
+      !gg
+      !keluar
+      `)
       break
     default:
       break
@@ -36,4 +73,11 @@ bot.on('message', msg => {
 
 bot.login(token)
 
-export default () => 'aloha!'
+// open port
+http
+  .createServer(function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' })
+    res.write('aloha!')
+    res.end()
+  })
+  .listen(8080)

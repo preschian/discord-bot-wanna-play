@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "micro",
-    "development": "NODE_ENV=development node index",
-    "deploy": "now rm discord-bot-wanna-play -y && now"
+    "now-alias": "now alias -t $NOW_TOKEN",
+    "now-scale": "now scale discord-bot-wanna-play.now.sh sfo 1 -t $NOW_TOKEN",
+    "start": "npm run now-alias && npm run now-scale && node index",
+    "development": "NODE_ENV=development node index"
   },
   "repository": {
     "type": "git",
@@ -21,20 +22,12 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "esm": "^3.0.81",
+    "ffmpeg-binaries": "^4.0.0",
     "level": "^4.0.0",
     "lodash": "^4.17.10",
-    "micro": "^9.3.3",
-    "now-env": "^3.1.0"
-  },
-  "now": {
-    "env": {
-      "TOKEN": "@discord-token"
-    },
-    "scale": {
-      "sfo1": {
-        "min": 1,
-        "max": 1
-      }
-    }
+    "node-opus": "^0.3.0",
+    "now": "11.4.1",
+    "now-env": "^3.1.0",
+    "opusscript": "^0.0.6"
   }
 }
