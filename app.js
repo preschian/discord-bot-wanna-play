@@ -51,9 +51,19 @@ bot.on('message', async msg => {
       msg.member.voiceChannel.leave()
       break
     case '!destroy':
-      console.log(msg.author.id)
-      bot.destroy()
-      process.exit(0)
+      if (msg.author.id === 108152551244881920) {
+        bot.destroy()
+        process.exit(0)
+      }
+      break
+    case '!perintah':
+      msg.reply(`
+        !main
+        !pemain
+        !ajak
+        !gg
+        !leave
+      `)
       break
     default:
       break
