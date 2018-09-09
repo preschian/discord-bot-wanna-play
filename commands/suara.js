@@ -6,12 +6,18 @@ async function suara(bot, con, msg, id) {
     155: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/4/4c/Chat_wheel_2018_oy_oy_oy.mp3',
     156: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/b/bb/Chat_wheel_2018_ta_daaaa.mp3',
   }
-  const stream = chat_wheel[id]
-  const broadcast = bot.createVoiceBroadcast().playStream(stream)
-  const dispatcher = con.playBroadcast(broadcast)
+  const numbers = Object.keys(chat_wheel)
 
-  // dispatcher.on('error', err => console.log('dispatcher error', err))
-  // dispatcher.on('end', end => console.log('end', end))
+  try {
+    const stream = chat_wheel[id]
+    const broadcast = bot.createVoiceBroadcast().playStream(stream)
+    const dispatcher = con.playBroadcast(broadcast)
+
+    // dispatcher.on('error', err => console.log('dispatcher error', err))
+    // dispatcher.on('end', end => console.log('end', end))
+  } catch (err) {
+    msg.reply(`baru tersedia ${numbers}`)
+  }
 }
 
 export default suara

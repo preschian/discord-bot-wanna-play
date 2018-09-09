@@ -35,16 +35,16 @@ bot.on('message', async msg => {
   }
 
   switch (msg.content) {
-    case '/main':
+    case '!main':
       main(db, msg)
       break
-    case '/pemain':
+    case '!pemain':
       pemain(db, msg)
       break
-    case '/ajak':
+    case '!ajak':
       msg.channel.send(`ayo main oy~ @everyone`)
       break
-    case '/gg':
+    case '!gg':
       gg(db, msg)
       break
     case '!leave':
