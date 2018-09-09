@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "now alias -t NOW_TOKEN -y && node index",
+    "start": "now alias -t $NOW_TOKEN && node index",
     "development": "NODE_ENV=development node index",
     "deploy": "now rm discord-bot-wanna-play -y && now"
   },
