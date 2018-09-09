@@ -47,10 +47,11 @@ bot.on('message', async msg => {
     case '!gg':
       gg(db, msg)
       break
-    case '!leave':
+    case '!keluar':
       msg.member.voiceChannel.leave()
       break
-    case '!destroy':
+    case '!tutup':
+      console.log(msg.author.id)
       if (msg.author.id === 108152551244881920) {
         bot.destroy()
         process.exit(0)
@@ -62,7 +63,7 @@ bot.on('message', async msg => {
         !pemain
         !ajak
         !gg
-        !leave
+        !keluar
       `)
       break
     default:
