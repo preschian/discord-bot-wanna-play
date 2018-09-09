@@ -1,5 +1,4 @@
 import { Client } from 'discord.js'
-import http from 'http'
 import level from 'level'
 import 'now-env'
 import { gg, main, pemain, suara } from './commands/index'
@@ -7,6 +6,7 @@ import { gg, main, pemain, suara } from './commands/index'
 const bot = new Client()
 let db = level('./data', { valueEncoding: 'json' })
 
+const http = require('http')
 const token = process.env.TOKEN
 
 bot.on('ready', () => {
