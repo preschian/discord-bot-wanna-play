@@ -74,11 +74,11 @@ bot.on('message', async msg => {
 bot.login(token)
 
 // open port
-const server = restify.createServer()
-server.get('/', (req, res, next) => {
-  res.send('aloha!')
-})
+// const server = restify.createServer()
+// server.get('/', (req, res, next) => {
+//   res.send({ status: 'aloha!' })
+// })
 
-server.listen(3000, function() {
-  console.log('%s listening at %s', server.name, server.url)
-})
+// server.listen(3000, function() {
+//   console.log('%s listening at %s', server.name, server.url)
+// })
