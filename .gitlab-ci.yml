@@ -1,0 +1,7 @@
+deploy:
+  script:
+    - now -t $ZEIT_TOKEN
+    - now alias -t $ZEIT_TOKEN
+    # - now rm discord-bot-wanna-play -y -t $ZEIT_TOKEN
+  only:
+    - /^dev-.*$/
