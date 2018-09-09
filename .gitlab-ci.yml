@@ -1,5 +1,12 @@
+image: mhart/alpine-node:9
+
+# cache:
+#   paths:
+#     - node_modules/
+
 deploy:
   script:
+    - npm install -g now
     - now -t $ZEIT_TOKEN
     - now alias -t $ZEIT_TOKEN
     # - now rm discord-bot-wanna-play -y -t $ZEIT_TOKEN
