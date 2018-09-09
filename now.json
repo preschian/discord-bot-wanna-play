@@ -1,4 +1,5 @@
 {
+  "alias": "discord-bot-wanna-play",
   "env": {
     "TOKEN": "@discord-token"
   },

@@ -26,7 +26,7 @@ bot.on('message', async msg => {
 
       if (msg.content.length === 1) return
 
-      suara(bot, con, msg, parseInt(msg.content.substr(1)))
+      suara(bot, con, msg, parseInt(msg.content.substr(1), 10))
     } else {
       msg.reply('kamu harus masuk saluran suara terlebih dahulu')
     }
@@ -49,6 +49,11 @@ bot.on('message', async msg => {
       break
     case '!leave':
       msg.member.voiceChannel.leave()
+      break
+    case '!destroy':
+      console.log(msg.author.id)
+      bot.destroy()
+      process.exit(0)
       break
     default:
       break

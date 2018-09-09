@@ -1,3 +1,5 @@
+import { RichEmbed } from 'discord.js'
+
 async function suara(bot, con, msg, id) {
   const chat_wheel = {
     152: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/1/13/Chat_wheel_2018_easiest_money.mp3',
@@ -16,7 +18,12 @@ async function suara(bot, con, msg, id) {
     // dispatcher.on('error', err => console.log('dispatcher error', err))
     // dispatcher.on('end', end => console.log('end', end))
   } catch (err) {
-    msg.reply(`baru tersedia ${numbers}`)
+    const embed = new RichEmbed()
+      .setTitle('Perintah tidak tersedia')
+      .setColor(0xff0000)
+      .setDescription(`baru tersedia ${numbers}`)
+
+    msg.channel.send(embed)
   }
 }
 
