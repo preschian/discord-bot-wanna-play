@@ -2,6 +2,7 @@ import { RichEmbed } from 'discord.js'
 
 async function suara(bot, con, msg, id) {
   const chat_wheel = {
+    1: 'https://www.myinstants.com/media/sounds/magic_immune.mp3',
     86: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/9/99/Chat_wheel_2017_rimshot.mp3',
     87: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/8/82/Chat_wheel_2017_charge.mp3',
     88: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/5/52/Chat_wheel_2017_frog.mp3',
@@ -63,9 +64,9 @@ async function suara(bot, con, msg, id) {
     // dispatcher.on('end', end => console.log('end', end))
   } catch (err) {
     const embed = new RichEmbed()
-      .setTitle('Perintah tidak tersedia')
+      .setTitle('Baru tersedia')
       .setColor(0xff0000)
-      .setDescription(`baru tersedia ${numbers}`)
+      .setDescription(`${numbers}`)
 
     msg.channel.send(embed)
   }
