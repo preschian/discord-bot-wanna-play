@@ -27,7 +27,7 @@ bot.on('message', async msg => {
 
       if (msg.content.length === 1) return
 
-      suara(bot, con, msg, parseInt(msg.content.substr(1), 10))
+      suara(bot, con, msg, msg.content.substr(1))
     } else {
       msg.reply('kamu harus masuk saluran suara terlebih dahulu')
     }
