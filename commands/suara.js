@@ -1,7 +1,9 @@
 import { RichEmbed } from 'discord.js'
+import ytdl from 'ytdl-core'
 
 async function suara(bot, con, msg, id) {
   const chat_wheel = {
+    1: 'https://www.myinstants.com/media/sounds/magic_immune.mp3',
     86: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/9/99/Chat_wheel_2017_rimshot.mp3',
     87: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/8/82/Chat_wheel_2017_charge.mp3',
     88: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/5/52/Chat_wheel_2017_frog.mp3',
@@ -52,20 +54,33 @@ async function suara(bot, con, msg, id) {
     156: 'https://d1u5p3l4wpay3k.cloudfront.net/dota2_gamepedia/b/bb/Chat_wheel_2018_ta_daaaa.mp3',
   }
   const numbers = Object.keys(chat_wheel)
+  let stream
 
   try {
-    const stream = chat_wheel[id]
-    const broadcast = bot.createVoiceBroadcast().playStream(stream)
-    con.playBroadcast(broadcast)
-    // const dispatcher = con.playBroadcast(broadcast)
+    if (typeof parseInt(id, 10) === 'number') {
+      stream = chat_wheel[id]
+    }
 
+    if (id.includes('.mp3')) {
+      stream = id
+    }
+
+    if (id.includes('youtube.com')) {
+      stream = ytdl(id, { filter: 'audioonly' })
+    }
+
+    let broadcast = bot.createVoiceBroadcast().playStream(stream, { seek: 0, volume: 1 })
+    con.playBroadcast(broadcast)
+
+    // need dispatcher?
+    // const dispatcher = con.playBroadcast(broadcast)
     // dispatcher.on('error', err => console.log('dispatcher error', err))
     // dispatcher.on('end', end => console.log('end', end))
   } catch (err) {
     const embed = new RichEmbed()
-      .setTitle('Perintah tidak tersedia')
+      .setTitle('Baru tersedia')
       .setColor(0xff0000)
-      .setDescription(`baru tersedia ${numbers}`)
+      .setDescription(`${numbers}`)
 
     msg.channel.send(embed)
   }
