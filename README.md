@@ -30,6 +30,11 @@ silakan kunjungi tautan [bot ini](https://discordapp.com/oauth2/authorize?client
 # bot mengeluarkan suara dari Chat Wheel Dota 2
 # https://dota2.gamepedia.com/Chat_Wheel, penggunaan: ?[angka]
 ?155
+# memainkan mp3 dari tautan
+?https://www.domain.com/tautan.mp3
+# memainkan youtube dari tautan
+?https://www.youtube.com/watch?v=tautan
+
 # mengeluarkan bot dari saluran percakapan
 !keluar
 ```
