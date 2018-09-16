@@ -7,7 +7,7 @@ async function main(db, msg) {
   const { id, discriminator, username } = msg.author
   const current_data = { id, channel_id, channel, discriminator, username }
 
-  await db.get(`${channel_id}`, async (err, val) => {
+  await db.get(`${channel_id}`, async function(err, val) {
     if (err) {
       // first data
       if (err.notFound) {

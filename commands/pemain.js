@@ -1,7 +1,7 @@
 async function pemain(db, msg) {
   const channel_id = msg.channel.id
 
-  await db.get(`${channel_id}`, async (err, val) => {
+  await db.get(`${channel_id}`, async function(err, val) {
     if (err) {
       msg.reply('tidak ada pemain di channel ini')
       return
