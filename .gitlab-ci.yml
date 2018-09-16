@@ -6,4 +6,4 @@ deploy:
     - now -t $ZEIT_TOKEN
     - now alias -t $ZEIT_TOKEN
   only:
-    - /^dev-.*$/
+    - branches
