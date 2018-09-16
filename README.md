@@ -35,7 +35,6 @@ silakan kunjungi tautan [bot ini](https://discordapp.com/oauth2/authorize?client
 # memainkan youtube dari tautan
 ?https://www.youtube.com/watch?v=tautan
 
-
 # mengeluarkan bot dari saluran percakapan
 !keluar
 ```
