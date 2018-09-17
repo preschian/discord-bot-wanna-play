@@ -77,10 +77,12 @@ bot.on('message', async function(msg) {
 bot
   .login(token)
   .then(async function() {
-    const guild = await bot.guilds.get('233142651132575744')
+    const guild_id = '233142651132575744'
+    const guild = await bot.guilds.get(guild_id)
 
-    cron.scheduleJob('5 0 * * *', function() {
-      const name = `"Hari ${format(new Date(), 'dddd', { locale: id })}"`
+    cron.scheduleJob('0 * * * *', function() {
+      const gmt_7 = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+      const format_nama = `"Hari ${format(gmt_7, 'dddd', { locale: id })}"`
 
       let not_exist = true
 
@@ -98,9 +100,9 @@ bot
 
       if (not_exist) {
         guild
-          .createChannel(name, 'voice', [
+          .createChannel(format_nama, 'voice', [
             {
-              id: '233142651132575744',
+              id: guild_id,
             },
           ])
           .then(val => console.log(val))
