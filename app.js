@@ -80,9 +80,10 @@ bot
     const guild_id = '233142651132575744'
     const guild = await bot.guilds.get(guild_id)
 
-    cron.scheduleJob('0 * * * *', function() {
+    cron.scheduleJob('20 * * * *', function() {
       const gmt_7 = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
       const format_nama = `"Hari ${format(gmt_7, 'dddd', { locale: id })}"`
+      console.log(format_nama)
 
       let not_exist = true
 
@@ -90,7 +91,7 @@ bot
         const find = val.name.includes('Hari')
 
         if (find) {
-          val.setName(name)
+          val.setName(format_nama)
           not_exist = false
           return
         }
