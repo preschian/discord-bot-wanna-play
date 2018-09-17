@@ -80,26 +80,26 @@ bot
     const guild_id = '233142651132575744'
     const guild = await bot.guilds.get(guild_id)
 
-    cron.scheduleJob('05 * * * *', function() {
+    function findExist(format_nama) {
+      return new Promise(function(resolve) {
+        guild.channels.find(function(channel) {
+          if (channel.name.includes('Hari')) {
+            channel.setName(format_nama)
+            resolve(true)
+          }
+        })
+
+        resolve(false)
+      })
+    }
+
+    cron.scheduleJob('5 * * * *', async function() {
       const gmt_7 = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
       const format_nama = `"Hari ${format(gmt_7, 'dddd', { locale: id })}"`
+      const isExist = await findExist(format_nama)
       console.log(format_nama)
 
-      let not_exist = true
-
-      guild.channels.find(function(val) {
-        const find = val.name.includes('Hari')
-
-        if (find) {
-          val.setName(format_nama)
-          not_exist = false
-          return
-        }
-
-        not_exist = true
-      })
-
-      if (not_exist) {
+      if (!isExist) {
         guild
           .createChannel(format_nama, 'voice', [
             {
