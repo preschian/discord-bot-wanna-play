@@ -80,7 +80,7 @@ bot
     const guild_id = '233142651132575744'
     const guild = await bot.guilds.get(guild_id)
 
-    cron.scheduleJob('50 * * * *', function() {
+    cron.scheduleJob('05 * * * *', function() {
       const gmt_7 = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
       const format_nama = `"Hari ${format(gmt_7, 'dddd', { locale: id })}"`
       console.log(format_nama)
@@ -106,7 +106,7 @@ bot
               id: guild_id,
             },
           ])
-          .then(val => console.log(val))
+          .then(() => console.log('done'))
           .catch(err => console.log(err))
       }
     })
