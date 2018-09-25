@@ -1,3 +1,5 @@
+[ ![Codeship Status for preschian/discord-bot-wanna-play](https://app.codeship.com/projects/2b1049d0-9bba-0136-8bb4-5ec7dcdc9e9a/status?branch=master)](https://app.codeship.com/projects/305761)
+
 ## deskripsi
 
 bot discord untuk mengajak bermain
