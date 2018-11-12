@@ -1,13 +1,14 @@
 {
+  "version": 2,
   "name": "discord-bot-wanna-play",
   "alias": "discord-bot-wanna-play",
   "env": {
     "TOKEN": "@discord-token"
   },
-  "scale": {
-    "bru1": {
-      "min": 1,
-      "max": 1
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
     }
-  }
+  ]
 }
