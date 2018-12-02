@@ -1,10 +1,9 @@
-import { format } from 'date-fns';
-import id from 'date-fns/locale/id/index';
-import { Client } from 'discord.js';
-import level from 'level';
-import cron from 'node-schedule';
-import 'now-env';
-import { gg, main, pemain, suara } from './commands/index';
+import { format } from 'date-fns'
+import id from 'date-fns/locale/id/index'
+import { Client } from 'discord.js'
+import level from 'level'
+import cron from 'node-schedule'
+import { gg, main, pemain, suara } from './commands/index'
 
 const bot = new Client()
 let db = level('./data', { valueEncoding: 'json' })
@@ -119,7 +118,7 @@ bot
 http
   .createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/plain' })
-    res.write('aloha!')
+    res.write('aloha! server up!')
     res.end()
   })
-  .listen(8080)
+  .listen(80)
